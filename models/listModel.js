@@ -12,8 +12,12 @@ const listSchema = new Schema(
       type: String,
       required: true,
     },
+    category: {
+      type: String,
+      required: true,
+    },
   },
   { timestamps: true }
 );
 
-module.exports = mongoose.model("List", listSchema);
+module.exports = mongoose.model("List", listSchema, "lists");
