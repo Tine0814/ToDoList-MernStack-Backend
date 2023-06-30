@@ -12,9 +12,17 @@ const listSchema = new Schema(
       type: String,
       required: true,
     },
-    category: {
+    description: {
       type: String,
       required: true,
+    },
+    date: {
+      type: String,
+      required: true,
+    },
+    done: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true }

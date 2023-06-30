@@ -30,10 +30,10 @@ const getList = async (req, res) => {
 // CREATE A NEW LIST
 
 const createList = async (req, res) => {
-  const { title, task, category } = req.body;
+  const { title, task, description, date, done } = req.body;
 
   try {
-    const list = await List.create({ title, task, category });
+    const list = await List.create({ title, task, description, date, done });
     res.status(200).json(list);
   } catch (error) {
     res.status(400).json({ error: error.message });
