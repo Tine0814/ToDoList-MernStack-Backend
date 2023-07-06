@@ -6,8 +6,11 @@ const {
   deleteList,
   updateList,
 } = require("../controllers/listControler");
+const requireAuth = require("../middleware/requireAuth");
 
 const router = express.Router();
+
+router.use(requireAuth); // this is middleware function to protect the data to not auth user
 
 // get all list
 router.get("/", getLists);

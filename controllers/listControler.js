@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 // GET ALL LISTS
 
 const getLists = async (req, res) => {
-  const list = await List.find({}).sort({ createdAt: -1 });
+  const user_id = req.user._id;
+  const list = await List.find({ user_id }).sort({ createdAt: -1 });
 
   res.status(200).json(list);
 };
@@ -30,10 +31,11 @@ const getList = async (req, res) => {
 // CREATE A NEW LIST
 
 const createList = async (req, res) => {
-  const { title, task, description, date, done } = req.body;
+  const { title, task, description, date } = req.body;
 
   try {
-    const list = await List.create({ title, task, description, date, done });
+    const user_id = req.user._id;
+    const list = await List.create({ title, task, description, date, user_id });
     res.status(200).json(list);
   } catch (error) {
     res.status(400).json({ error: error.message });

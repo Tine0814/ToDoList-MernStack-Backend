@@ -20,9 +20,9 @@ const listSchema = new Schema(
       type: String,
       required: true,
     },
-    done: {
-      type: Boolean,
-      default: false,
+    user_id: {
+      type: String,
+      required: true,
     },
   },
   { timestamps: true }
